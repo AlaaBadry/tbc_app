@@ -1,0 +1,194 @@
+<style type="text/css">
+	h3 {
+		margin: auto;
+		text-align: center;
+		padding: 10px;
+		color: white;
+	}
+
+	.table {
+		background-color: white;
+		margin: auto;
+		border-collapse: separate;
+		display: block;
+		overflow-x: scroll;
+	}
+
+	thead, tbody {
+		display: inline-block;
+	}
+
+	thead {
+		position: sticky;
+		top: 1px;
+		z-index: 3;
+	}
+
+	tbody {
+		height: 500px;
+	}
+
+	th {
+		background-color: lightgrey;
+	}
+
+	/*td,th {
+		min-width: 153px;
+		max-width: 153px;
+		word-wrap: break-word;
+	}*/
+
+	.fixed {
+		position: sticky;
+		width: 5em;
+		left: 0;
+		top: auto;
+		z-index: 2;
+	}
+
+	td:not(.fixed) {
+		z-index: 0;
+	}
+		
+	.ta{
+		text-align: center;
+		width:12.5%;
+		word-wrap: break-word;
+	}
+	.header2 {
+		position: sticky;
+		left: 9em;
+		top: auto;
+		min-width: 120px;
+		max-width: 120px;
+		text-align: center;
+	}
+	.color{
+		background-color: #f7fafc
+	}
+	.header1{
+		position: sticky;
+		left: 14em;
+		top: auto;
+	}
+	.hcolor{
+		background-color: #ffe699
+	}
+	.fw{
+		width:7%;
+	}
+	.fw1{
+		width:7%;
+	}
+
+</style>
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" /> -->
+
+
+<div  style="margin:10px">
+	<span onclick="change_previous_week()">
+		<a><i class="fa fa-angle-double-left previous_week" style="font-size:20px;float:left">Previous Week</i></a>
+	</span>
+		
+
+	
+	<span onclick="change_next_week()">
+		<a><i class="fa fa-angle-double-right next_week" style="font-size:20px;float:right">Next Week</i></a>
+	</span>
+
+</div>
+<br>
+<br>
+
+{% if data["template_data"] %}
+
+<div class="conatiner" style="width:100%">
+  <table class="table table-bordered" id="main_tbl">
+    <thead>
+      <tr>
+        <th class="ta fixed " colspan="12" style="background-color:#ff9966">{{data.department or ""}} Work Plan</th>
+      </tr>
+      <tr>
+        <th class="ta fixed hcolor"  style="width:10%" colspan="2">Day</th>
+        <th class="ta hcolor">Sunday</th>
+		<th class="ta hcolor">Monday</th>
+		<th class="ta hcolor">Tuesday</th>
+		<th class="ta hcolor">Wednesday</th>
+		<th class="ta hcolor">Thursday</th>
+		<th class="ta hcolor">Friday</th>
+		<th class="ta hcolor">Saturday</th>
+      </tr>
+      <tr>
+	        <th class="ta fixed hcolor" style="width:10%" colspan="2">Date</th>
+			{% for d in data["week_days"] %}
+			<th class="ta hcolor" >{{d}}</th>
+			{% endfor %}
+      	</tr>
+      	<tr>
+	        <th class="fixed ta " style="background-color:#ff9899">Project</th>
+			<th class="fixed header2  fw" style="background-color:#ff9899">Caliber</th>
+      	</tr>
+    </thead>
+    <tbody>
+    	
+
+        {% for d in data["template_data"] %}
+		<tr  style="text-align:center" >
+
+
+			<td class="fixed ta color"><b>{{d["project"]}}</b></td>
+			<td class="fixed header2 color fw1"><b>{{d["caliber"]}}</b></td>
+
+			<td class="ta assign_task dbclick" style="background-color:{{d["Sunday"]["color"]}}" 
+				task_name="{{d["Sunday"]["task_name"]}}" caliber_user="{{d["caliber_user"]}}" >
+				
+					
+				{{d["Sunday"]["subject"] or ""}}
+		
+			</td>
+			
+			<td class="ta  assign_task dbclick" style="background-color:{{d["Monday"]["color"]}}" 
+			task_name="{{d["Monday"]["task_name"]}}" caliber_user="{{d["caliber_user"]}}"
+			>
+			{{d["Monday"]["subject"] or ""}}</td>
+			
+			<td class="ta assign_task dbclick" style="background-color:{{d["Tuesday"]["color"]}}"
+			task_name="{{d["Tuesday"]["task_name"]}}" caliber_user="{{d["caliber_user"]}}"
+			>
+			{{d["Tuesday"]["subject"] or ""}}</td>
+			
+			<td class="ta assign_task dbclick" style="background-color:{{d["Wednesday"]["color"]}}"
+			task_name="{{d["Wednesday"]["task_name"]}}" caliber_user="{{d["caliber_user"]}}"
+			>
+			{{d["Wednesday"]["subject"] or ""}}</td>
+			
+			<td class="ta assign_task dbclick" style="background-color:{{d["Thursday"]["color"]}}"
+			task_name="{{d["Thursday"]["task_name"]}}" caliber_user="{{d["caliber_user"]}}"
+			>
+			{{d["Thursday"]["subject"] or ""}}</td>
+			
+			<td class="ta assign_task dbclick" style="background-color:{{d["Friday"]["color"]}}"
+			task_name="{{d["Friday"]["task_name"]}}" caliber_user="{{d["caliber_user"]}}"
+			>
+			{{d["Friday"]["subject"] or ""}}</td>
+			
+			<td class="ta assign_task dbclick" style="background-color:{{d["Saturday"]["color"]}}"
+			task_name="{{d["Saturday"]["task_name"]}}" caliber_user="{{d["caliber_user"]}}"
+			>
+			{{d["Saturday"]["subject"] or ""}}</td>
+
+		</tr>
+		{% endfor %}
+
+    </tbody>
+  </table>
+</div>
+{% else %}
+	<div style="margin:10px;font-size:20px;text-align: center">
+		
+	<span >
+		No data for selected criteria
+	</span>
+	</div>
+
+{% endif %}

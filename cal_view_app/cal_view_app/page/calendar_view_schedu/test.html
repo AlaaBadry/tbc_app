@@ -1,0 +1,153 @@
+<style type="text/css">
+	
+h3 {
+  margin: auto;
+  text-align: center;
+  padding: 10px;
+  color: white;
+}
+
+.table {
+  background-color: white;
+  margin: auto;
+  width: 600px;
+  border-collapse: separate;
+  display: block;
+  overflow-x: scroll;
+}
+
+thead,
+tbody {
+  display: inline-block;
+}
+
+thead {
+  position: sticky;
+  top: 1px;
+  z-index: 9999;
+}
+
+tbody {
+  height: 500px;
+}
+
+th {
+  background-color: lightgrey;
+}
+
+td,
+th {
+  min-width: 100px;
+  max-width: 100px;
+  word-wrap: break-word;
+}
+
+.fixed {
+  position: sticky;
+  width: 5em;
+  left: 0;
+  top: auto;
+  z-index: 999;
+}
+
+td:not(.fixed) {
+  z-index: 0;
+}
+
+
+
+</style>
+
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+<div class="conatiner">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th></th>
+        <th colspan="6">Europe</th>
+        <th colspan="3">South-America</th>
+        <th colspan="2">Asia</th>
+      </tr>
+      <tr>
+        <th class="fixed">Countries</th>
+        <th class="fixed">Germany</th>
+        <th>Spain</th>
+        <th>Portugal</th>
+        <th>France</th>
+        <th>England</th>
+        <th>Croatia</th>
+        <th>Argentina</th>
+        <th>Brazil</th>
+        <th>Colombia</th>
+        <th>Japan</th>
+        <th>Russia</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th class="fixed">Goalkeeper</th>
+        <th class="fixed">Neuer</th>
+        <td>De Gea</td>
+        <td>Beto</td>
+        <td>Lloris</td>
+        <td>Butland</td>
+        <td>Subasic</td>
+        <td>Caballero</td>
+        <td>Alisson</td>
+        <td>Ospina</td>
+        <td>Kawashima</td>
+        <td>Lunev</td>
+      </tr>
+      <tr>
+        <th class="fixed">Defender</th>
+        <th class="fixed">Boateng</th>
+        <td>Ramos</td>
+        <td>Pepe</td>
+        <td>Varane</td>
+        <td>Walker</td>
+        <td>Lovren</td>
+        <td>Otamendi</td>
+        <td>Marcelo</td>
+        <td>Sanchez</td>
+        <td>Makino</td>
+        <td>Granat</td>
+      </tr>
+      <tr>
+        <th class="fixed">Midfielder</th>
+        <th class="fixed">Kroos</th>
+        <td>Iniesta</td>
+        <td>Ronaldo</td>
+        <td>Tolisso</td>
+        <td>Lingard</td>
+        <td>Modric</td>
+        <td>Messi</td>
+        <td>Paulinho</td>
+        <td>Rodriguez</td>
+        <td>Honda</td>
+        <td>Golovin</td>
+      </tr>
+    
+      {% for d in range(100)%}
+
+      <tr>
+
+        <th class="fixed">Forward</th>
+        <th class="fixed">Gomez</th>
+        <td>Asensio</td>
+        <td>Quaresma</td>
+        <td>Griezmann</td>
+        <td>Welbeck</td>
+        <td>Perisic</td>
+        <td>Dybala</td>
+        <td>Neymar</td>
+        <td>Bacca</td>
+        <td>Osako</td>
+        <td>Smolov</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>

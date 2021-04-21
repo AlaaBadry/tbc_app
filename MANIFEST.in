@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include cal_view_app *.css
+recursive-include cal_view_app *.csv
+recursive-include cal_view_app *.html
+recursive-include cal_view_app *.ico
+recursive-include cal_view_app *.js
+recursive-include cal_view_app *.json
+recursive-include cal_view_app *.md
+recursive-include cal_view_app *.png
+recursive-include cal_view_app *.py
+recursive-include cal_view_app *.svg
+recursive-include cal_view_app *.txt
+recursive-exclude cal_view_app *.pyc
